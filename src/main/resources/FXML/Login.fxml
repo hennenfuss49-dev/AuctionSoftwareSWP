@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane styleClass="form_overlay" stylesheets="@../CSS/AuctionSoftware.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.auction.Controller.LoginViewController">
+   <center>
+      <BorderPane fx:id="parent" styleClass="background" BorderPane.alignment="CENTER">
+         <top>
+            <AnchorPane fx:id="windowBar" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" styleClass="windowBar" stylesheets="@../CSS/WindowBar.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="txtWindowBarTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="windowBarTitle" text="Title" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="7.0" />
+                  <Button fx:id="btnCloseWindow" layoutX="1162.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.3" prefWidth="25.3" styleClass="windowCloseBtn" AnchorPane.rightAnchor="4.6" AnchorPane.topAnchor="9.0" />
+                  <Button fx:id="btnMinimizeWindow" layoutX="1148.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.3" prefWidth="25.3" styleClass="windowMinimizeBtn" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="9.0" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="535.0" prefWidth="300.0" styleClass="background" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="535.0" prefWidth="300.0" spacing="20.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text fx:id="txtWindowBarTitle1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="LOGIN" />
+                        <Text fx:id="txtError" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtError" />
+                        <TextField fx:id="inpEmail" prefHeight="48.0" prefWidth="248.0" promptText="Email" styleClass="inpField" />
+                        <TextField fx:id="inpPassword" prefHeight="48.0" prefWidth="248.0" promptText="Password" styleClass="inpField" />
+                        <HBox alignment="CENTER" maxWidth="300.0" minWidth="130.0" prefWidth="300.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="btnLogin" graphicTextGap="0.0" maxHeight="48.0" maxWidth="48.0" minHeight="48.0" minWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" styleClass="btnSecond" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" scaleX="0.2" scaleY="0.2" smooth="false">
+                                       <image>
+                                          <Image url="@../IMG/APP_ICONS/login_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnCreateAccount" graphicTextGap="0.0" maxHeight="48.0" maxWidth="200.0" minHeight="48.0" minWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" styleClass="btnSecond" text="Create Account" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" right="25.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

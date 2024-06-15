@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane styleClass="form_overlay" stylesheets="@../CSS/AuctionSoftware.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.auction.Controller.AuctionSoftwareController">
+   <center>
+      <BorderPane fx:id="parent" styleClass="background" BorderPane.alignment="CENTER">
+         <left>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="240.0" styleClass="left" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="237.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text fx:id="txtWelcome" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Hello, " />
+                     </children>
+                  </HBox>
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="94.0" maxWidth="-Infinity" minViewportHeight="200.0" minViewportWidth="237.0" minWidth="-Infinity" prefViewportHeight="200.0" prefViewportWidth="237.0" prefWidth="237.0" styleClass="scrollpane" stylesheets="@../CSS/Scrollbar_pane.css" AnchorPane.bottomAnchor="205.0" AnchorPane.topAnchor="90.0">
+                     <content>
+                        <VBox fx:id="vboxSelectionList" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="237.0" spacing="20.0">
+                           <children>
+                              <Button fx:id="btnShowAllArticles" graphicTextGap="0.0" maxHeight="48.0" maxWidth="200.0" minHeight="48.0" minWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" styleClass="btnSecond" text="Articles" textFill="WHITE" />
+                              <Button fx:id="btnShowOwnArticles" graphicTextGap="0.0" maxHeight="48.0" maxWidth="200.0" minHeight="48.0" minWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" styleClass="btnSecond" text="Own Articles" textFill="WHITE" />
+                              <Button fx:id="btnShowBids" graphicTextGap="0.0" maxHeight="48.0" maxWidth="200.0" minHeight="48.0" minWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" styleClass="btnSecond" text="Your Bids" textFill="WHITE" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <VBox alignment="CENTER" layoutX="-1.0" layoutY="822.0" prefWidth="215.0" spacing="10.0" AnchorPane.bottomAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="btnLogOut" graphicTextGap="0.0" maxHeight="48.0" maxWidth="48.0" minHeight="48.0" minWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" styleClass="btnSecond" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" scaleX="0.2" scaleY="0.2" smooth="false">
+                                       <image>
+                                          <Image url="@../IMG/APP_ICONS/logout_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Line endX="240.0" endY="615.0" startY="615.0" stroke="#2e3438" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <top>
+            <AnchorPane fx:id="windowBar" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" styleClass="windowBar" stylesheets="@../CSS/WindowBar.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="txtWindowBarTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="windowBarTitle" text="Title" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="7.0" />
+                  <Button fx:id="btnCloseWindow" layoutX="1162.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.3" prefWidth="25.3" styleClass="windowCloseBtn" AnchorPane.rightAnchor="4.6" AnchorPane.topAnchor="9.0" />
+                  <Button fx:id="btnMinimizeWindow" layoutX="1148.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.3" prefWidth="25.3" styleClass="windowMinimizeBtn" AnchorPane.rightAnchor="45.4" AnchorPane.topAnchor="9.0" />
+                  <Button fx:id="btnMaximizeWindow" layoutX="1158.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.3" prefWidth="25.3" styleClass="windowMaximizeBtn" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="9.0" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxWidth="835.0" minViewportHeight="200.0" minViewportWidth="237.0" minWidth="835.0" prefViewportHeight="200.0" prefViewportWidth="237.0" prefWidth="835.0" styleClass="scrollpane" stylesheets="@../CSS/Scrollbar_pane.css" BorderPane.alignment="CENTER">
+               <content>
+                  <FlowPane fx:id="cardDisplayPane" hgap="20.0" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" prefWrapLength="800.0" vgap="20.0" />
+               </content>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

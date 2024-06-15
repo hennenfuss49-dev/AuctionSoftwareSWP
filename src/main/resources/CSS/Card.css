@@ -1,0 +1,24 @@
+.card:hover{
+    -fx-cursor: hand;
+}
+
+.card{
+    -fx-background-color: #1A2833;
+    -fx-opacity: .8;
+    -fx-font-size: 12;
+    -fx-font-weight: normal;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 10;
+    -fx-content-display: left;
+}
+
+.heading{
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.heading2{
+    -fx-font-size: 18;
+    -fx-fill: white;
+}

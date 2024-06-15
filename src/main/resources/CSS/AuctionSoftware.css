@@ -1,0 +1,140 @@
+@font-face {
+    font-family: 'Inter';
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap') format('truetype');
+}
+
+.background{
+    -fx-background-color: #111B22;
+    -fx-background-radius: 20;
+}
+
+.form_overline{
+    -fx-fill: #47668D;
+    -fx-font-family: "Inter";
+}
+
+.txt{
+    -fx-font-size: 20;
+    -fx-fill: #FFFFFF;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-font-weight: bold;
+}
+
+.txtError{
+    -fx-font-size: 10;
+    -fx-fill: #e23636;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-font-weight: normal;
+}
+
+.form_overlay{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.form_body{
+    -fx-font-size: 20;
+    -fx-fill: #FFFFFF;
+    -fx-font-family: 'Inter', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.inpField{
+    -fx-background-color: #1A2833;
+    -fx-font-family: "Inter";
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 4;
+    -fx-text-fill: #FFFFFF;
+}
+
+.left{
+    -fx-border-color: transparent #2e3438 transparent transparent;
+    -fx-border-width: 2px;
+}
+
+.right{
+    -fx-border-color: transparent transparent transparent #2e3438;
+    -fx-border-width: 2px;
+}
+
+.btn{
+    -fx-background-color: #2B52DD;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 40;
+    -fx-content-display: left;
+}
+
+.btn:hover{
+    -fx-cursor: hand;
+}
+
+.btnSecond:hover{
+    -fx-cursor: hand;
+}
+
+.btnSecond{
+    -fx-background-color: #1A2833;
+    -fx-opacity: .8;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 10;
+    -fx-content-display: left;
+}
+
+* Button:hover{
+    -fx-cursor: hand;
+}
+
+#error{
+    -fx-fill: #C94646;
+    -fx-font-size: 12;
+}
+
+.btn{
+    -fx-background-color: #2B52DD;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 40;
+    -fx-content-display: left;
+}
+
+.btn:hover{
+    -fx-cursor: hand;
+}
+
+.btnSecond:hover{
+    -fx-cursor: hand;
+}
+
+.btnSecond{
+    -fx-background-color: #1A2833;
+    -fx-opacity: .8;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 10;
+    -fx-content-display: left;
+}
+
+.actionBtn:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #2e3438;
+}
+
+.actionBtn{
+    -fx-background-color: #111B22;
+    -fx-border-color: transparent #2e3438 transparent transparent;
+    -fx-opacity: .8;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 0;
+    -fx-content-display: left;
+}

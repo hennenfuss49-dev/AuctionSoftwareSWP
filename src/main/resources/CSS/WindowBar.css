@@ -1,0 +1,32 @@
+.windowBar{
+    -fx-background-color: #0F1A21;
+    -fx-background-radius: 20;
+}
+
+.windowCloseBtn{
+    -fx-background-color: #C94646;
+    -fx-scale-x: .6;
+    -fx-scale-y: .6;
+    -fx-background-radius: 40;
+}
+
+.windowMinimizeBtn{
+    -fx-background-color: #747267;
+    -fx-scale-x: .6;
+    -fx-scale-y: .6;
+    -fx-background-radius: 40;
+}
+
+.windowMaximizeBtn{
+    -fx-background-color: #57c946;
+    -fx-scale-x: .6;
+    -fx-scale-y: .6;
+    -fx-background-radius: 40;
+}
+
+.windowBarTitle{
+    -fx-font-size: 20;
+    -fx-fill: #FFFFFF;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-font-weight: bold;
+}
