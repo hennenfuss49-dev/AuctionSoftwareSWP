@@ -1,0 +1,121 @@
+.card{
+    -fx-background-color: #111B22;
+    -fx-opacity: .8;
+    -fx-font-size: 12;
+    -fx-font-weight: normal;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 0;
+    -fx-content-display: left;
+}
+
+.box{
+    -fx-border-color: #D3D3D3FF;
+    -fx-border-radius: 5;
+}
+
+.heading{
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.heading2{
+    -fx-font-size: 18;
+    -fx-fill: white;
+}
+
+.description{
+    -fx-font-size: 12;
+    -fx-text-fill: white;
+    -fx-fill: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 4;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.link2{
+    -fx-font-size: 18;
+    -fx-fill: #4b7fe1;
+}
+
+.heading3{
+    -fx-font-size: 14;
+    -fx-fill: white;
+}
+
+
+.txtMoney{
+    -fx-font-size: 18;
+    -fx-fill: #4be14b;
+}
+
+.txtTime{
+    -fx-font-size: 18;
+    -fx-fill: #dd2b40;
+}
+
+.btnQuickBid{
+    -fx-background-color: #dd2b40;
+    -fx-font-size: 12;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 40;
+    -fx-content-display: left;
+}
+
+.btnQuickBid:hover{
+    -fx-cursor: hand;
+}
+
+.btnSubmitBid{
+    -fx-background-color: #4be14b;
+    -fx-font-size: 12;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 40;
+    -fx-content-display: left;
+}
+
+.btnSubmitBid:hover{
+    -fx-cursor: hand;
+}
+
+.inpField{
+    -fx-background-color: #1A2833;
+    -fx-font-family: "Inter";
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 4;
+    -fx-text-fill: #FFFFFF;
+}
+
+.inpField_withBlock{
+    -fx-background-color: #1A2833;
+    -fx-font-family: "Inter";
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 0 4 4 0;
+    -fx-text-fill: #FFFFFF;
+}
+
+.inpFieldBlock{
+    -fx-background-color: #1A2833;
+    -fx-font-family: "Inter";
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 4 0 0 4;
+    -fx-text-fill: #FFFFFF;
+    -fx-min-width: 20;
+}

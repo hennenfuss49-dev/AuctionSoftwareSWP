@@ -123,6 +123,21 @@
     -fx-content-display: left;
 }
 
+.btnNavbar:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(155, 155, 155, 0.18);
+}
+
+.btnNavbar{
+    -fx-background-color: transparent;
+    -fx-opacity: .8;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Inter', sans-serif;
+    -fx-background-radius: 0;
+    -fx-content-display: left;
+}
+
 .actionBtn:hover{
     -fx-cursor: hand;
     -fx-background-color: #2e3438;

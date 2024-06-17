@@ -1,48 +1,50 @@
 package at.auction.Controller;
 
 import at.auction.Controller.Cards.ArticleCard;
+import at.auction.Controller.Cards.SellArticleCard;
+import at.auction.Controller.Cards.SingleArticleCard;
+import at.auction.Controller.Cards.YourAccountCard;
 import at.auction.Database.DAOs.ArticleDAOImpl;
 import at.auction.Database.DTOs.ArticleDTO;
 import at.auction.Database.DisplayableCard;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class CardDisplayController {
-    private final FlowPane cardDisplay;
+    private FlowPane cardDisplay;
+    private VBox singleCardDisplay;
 
     private final ArticleDAOImpl articleDAO;
 
     private ArrayList<DisplayableCard> cards;
 
-    public CardDisplayController(FlowPane cardDisplay) {
+    private final ObjectProperty<CardDisplayState> cardDisplayState = new SimpleObjectProperty<>(CardDisplayState.ARTICLES);
+
+    public CardDisplayController() {
         this.cards = new ArrayList<>();
-        this.cardDisplay = cardDisplay;
         this.articleDAO = new ArticleDAOImpl();
 
     }
 
     public void onCardDisplayStateChange(CardDisplayState state){
-        switch(state){
+        cardDisplayState.set(state);
+        switch(cardDisplayState.getValue()){
             case ARTICLES -> displayAllArticles();
-            case OWN_ARTICLES -> displayOwnArticles();
-            case YOUR_BIDS -> displayBids();
+            case ACCOUNT -> displayAccount();
+            case SELL -> displaySell();
+            case ARTICLE -> displayArticle();
         }
-        System.out.println(cards);
     }
 
     private void displayAllArticles() {
@@ -61,6 +63,7 @@ public class CardDisplayController {
                 card.setElList((VBox) card.getCard().getChildren().get(0));
                 card.setComponents((Text) card.getElList().getChildren().get(0), (Text) card.getElList().getChildren().get(1), (Text) card.getElList().getChildren().get(2), (Text) card.getElList().getChildren().get(3), (Text) ((HBox)card.getElList().getChildren().get(4)).getChildren().get(0), (Text) ((HBox)card.getElList().getChildren().get(4)).getChildren().get(1));
                 card.setData((ArticleDTO) el);
+                card.setCardDTO((ArticleDTO) el);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -68,15 +71,53 @@ public class CardDisplayController {
         });
     }
 
-    private void displayOwnArticles() {
+    private void displayAccount() {
         cards.clear();
         cardDisplay.getChildren().clear();
+        YourAccountCard card = new YourAccountCard();
+        try {
+            card.setCard(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/YourAccountCard.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        cardDisplay.getChildren().add(card.getCard());
     }
 
-    private void displayBids() {
+    private void displaySell() {
         cards.clear();
         cardDisplay.getChildren().clear();
+        SellArticleCard card = new SellArticleCard();
+        try {
+            card.setCard(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/SellArticleCard.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        cardDisplay.getChildren().add(card.getCard());
     }
 
+    private void displayArticle() {
+        cards.clear();
+        cardDisplay.getChildren().clear();
+        SingleArticleCard card = new SingleArticleCard();
+        try {
+            card.setCard(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/SingleArticleCard.fxml"))));
+            card.setElListCenter((VBox) card.getCard().getChildren().get(1));
+            card.setComponents((Text) card.getElListCenter().getChildren().get(0),(TextArea) ((VBox) card.card.getChildren().get(0)).getChildren().get(1), (Text) ((HBox)card.getElListCenter().getChildren().get(1)).getChildren().get(1), (Text) ((HBox)card.getElListCenter().getChildren().get(6)).getChildren().get(1));
+            card.setData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        cardDisplay.getChildren().add(card.getCard());
+    }
 
+    public ObjectProperty<CardDisplayState> cardDisplayStateProperty() {
+        return cardDisplayState;
+    }
+
+    public void setCardDisplay(FlowPane cardDisplay) {
+        this.cardDisplay = cardDisplay;
+    }
+    public void setSingleCardDisplay(VBox singleCardDisplay) {
+        this.singleCardDisplay = singleCardDisplay;
+    }
 }

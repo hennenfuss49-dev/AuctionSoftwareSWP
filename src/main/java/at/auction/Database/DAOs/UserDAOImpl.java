@@ -40,7 +40,22 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void save(UserDTO userDTO) throws SQLException {
+        Connection con = DBModel.getInstance().getConnection();
+        String sql = """
+                INSERT INTO user (firstName, lastName, EMail, Password, userState)
+                VALUES
+                    (?, ?, ?, ?, ?)
+                on duplicate key update firstName = values(firstName), lastName = values(lastName),
+                                        email = values(email), password = values(password), userState = values(userState);
+                """;
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, userDTO.firstName());
+        ps.setString(2, userDTO.lastName());
+        ps.setString(3, userDTO.email());
+        ps.setString(4, userDTO.password());
+        ps.setString(5, userDTO.userState());
 
+        ps.executeUpdate();
     }
 
     @Override

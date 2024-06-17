@@ -43,9 +43,16 @@ public class LoginViewController implements Initializable {
         }else{
             txtError.setText("Error occurred -> Wrong email or password!");
         }
+//        AuthenticationModel.getInstance().authenticateUser("john.doe@example.com", "password123");
+//        Model.getInstance().getViewFactory().switchStage("App", 1040, 535, false);
     }
 
     private void onBtnCreateAccount(){
-
+        if(AuthenticationModel.getInstance().createUser(inpEmail.getText(), inpPassword.getText())){
+            txtError.setText("");
+            Model.getInstance().getViewFactory().switchStage("App", 1040, 535, false);
+        }else{
+            txtError.setText("Error occurred -> EMail is already used!");
+        }
     }
 }

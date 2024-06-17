@@ -32,6 +32,25 @@ public class AuthenticationModel {
         return user != null;
     }
 
+    public boolean createUser(String email, String password){
+        try {
+            userDAO.save(new UserDTO(0, "Anonymous", "Anonymous", email, password, "active"));
+            user = userDAO.get(email, password);
+        } catch (SQLException e) {
+            System.err.println("Email is already used!!");
+        }
+        return user != null;
+    }
+
+    public void updateUserName(String firstName, String lastName){
+        try {
+            userDAO.save(new UserDTO(0, firstName, lastName, AuthenticationModel.getInstance().getUser().email(), AuthenticationModel.getInstance().getUser().password(), "active"));
+            user = userDAO.get(getUser().email(), getUser().password());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void logoutUser(){
         user = null;
     }

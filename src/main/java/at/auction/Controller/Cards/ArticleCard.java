@@ -1,7 +1,9 @@
 package at.auction.Controller.Cards;
 
+import at.auction.Controller.CardDisplayState;
 import at.auction.Database.DTOs.ArticleDTO;
-import javafx.beans.property.SimpleBooleanProperty;
+import at.auction.Model.CardDisplayModel;
+import javafx.beans.property.*;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -22,44 +24,33 @@ public class ArticleCard implements Initializable {
 
     public VBox elList;
 
-    private ArticleDTO cardValues;
 
-    private final SimpleBooleanProperty isSelected = new SimpleBooleanProperty(false);
+    private final ObjectProperty<ArticleDTO> cardDTO;
 
     public void setData(ArticleDTO cardValues) {
-        this.cardValues = cardValues;
-        txtLabel.setText(cardValues.label());
-        txtDescription.setText(cardValues.description());
-        txtStartPrice.setText(String.valueOf(cardValues.startPrice()));
-        txtCancellationState.setText(String.valueOf(cardValues.cancellationState()));
-        txtStartTime.setText(String.valueOf(cardValues.startTime()));
-        txtEndTime.setText(String.valueOf(cardValues.endTime()));
+        txtLabel.textProperty().bind(new SimpleStringProperty(cardValues.label()));
+        txtDescription.textProperty().bind(new SimpleStringProperty(cardValues.description()));
+        txtStartPrice.textProperty().bind(new SimpleStringProperty("$" + cardValues.currentPrice()));
+        txtCancellationState.textProperty().bind(new SimpleStringProperty(cardValues.cancellationState()));
+        txtStartTime.textProperty().bind(new SimpleStringProperty(String.valueOf(cardValues.startTime())));
+        txtEndTime.textProperty().bind(new SimpleStringProperty(String.valueOf(cardValues.endTime())));
+        cardDTO.set(new ArticleDTO(cardValues.articleId(), cardValues.userId(), cardValues.label(), cardValues.description(), cardValues.startTime(), cardValues.endTime(), cardValues.free(), cardValues.currentPrice(), cardValues.cancellationState()));
+
+        card.setOnMouseClicked(e-> {
+            onMouseClicked();
+        });
     }
 
     public ArticleCard(){
-
+        cardDTO = new SimpleObjectProperty<>(null);
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        card.setOnMouseClicked(e-> {
-            isSelected.set(!isSelected.get());
-        });
-        isSelected.addListener(e ->{
-            if(isSelected.get()){
-                elList.setPrefWidth(790);
-                card.setPrefWidth(800);
-                card.setPrefHeight(400);
-                txtDescription.setScaleX(1);
-                txtDescription.setScaleY(1);
-            }else{
-                elList.setPrefWidth(240);
-                card.setPrefWidth(250);
-                card.setPrefHeight(200);
-                txtDescription.setScaleX(0);
-                txtDescription.setScaleY(0);
-            }
-        });
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
+
+    private void onMouseClicked(){
+        CardDisplayState.setCurrentArticle(cardDTO.get());
+        CardDisplayModel.getInstance().getCardDisplayController().onCardDisplayStateChange(CardDisplayState.ARTICLE);
     }
 
     public void setComponents(Text txtLabel, Text txtDescription, Text txtStartPrice, Text txtCancellationState, Text txtStartTime, Text txtEndTime){
@@ -85,5 +76,9 @@ public class ArticleCard implements Initializable {
 
     public void setCard(AnchorPane card) {
         this.card = card;
+    }
+
+    public void setCardDTO(ArticleDTO cardDTO) {
+        this.cardDTO.set(cardDTO);
     }
 }

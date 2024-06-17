@@ -2,6 +2,7 @@ package at.auction.Controller;
 
 import at.auction.Auth.AuthenticationModel;
 import at.auction.Controller.WindowBar.WindowBarHandler;
+import at.auction.Model.CardDisplayModel;
 import at.auction.Model.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,8 +21,8 @@ public class AuctionSoftwareController implements Initializable {
     public BorderPane parent;
     public VBox vboxSelectionList;
     public Button btnShowAllArticles;
-    public Button btnShowOwnArticles;
-    public Button btnShowBids;
+    public Button btnShowAccount;
+    public Button btnSell;
     public Button btnLogOut;
     public AnchorPane windowBar;
     public Button btnCloseWindow;
@@ -29,12 +30,10 @@ public class AuctionSoftwareController implements Initializable {
     public Button btnMaximizeWindow;
     public Text txtWindowBarTitle;
     public FlowPane cardDisplayPane;
+    public VBox singleCardDisplay;
     public Text txtWelcome;
 
     private WindowBarHandler windowBarHandler;
-    private CardDisplayController cardDisplayController;
-
-    private final ObjectProperty<CardDisplayState> cardDisplayState = new SimpleObjectProperty<>(CardDisplayState.ARTICLES);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,17 +41,16 @@ public class AuctionSoftwareController implements Initializable {
         windowBarHandler.handleWindowBar();
         windowBarHandler.setWindowBarTitle("Auction Software");
 
-        btnShowBids.setOnAction(e-> onBtnShowBids());
+        btnSell.setOnAction(e-> onBtnSell());
         btnShowAllArticles.setOnAction(e-> onBtnShowAllArticles());
-        btnShowOwnArticles.setOnAction(e-> onBtnShowOwnArticles());
+        btnShowAccount.setOnAction(e-> onBtnShowAccount());
         btnLogOut.setOnAction(e -> onBtnLogOut());
-
-        cardDisplayController = new CardDisplayController(cardDisplayPane);
-        cardDisplayController.onCardDisplayStateChange(CardDisplayState.ARTICLES);
-        cardDisplayState.addListener(e -> {
-            cardDisplayController.onCardDisplayStateChange(cardDisplayState.getValue());
+        CardDisplayModel.getInstance().getCardDisplayController().setCardDisplay(cardDisplayPane);
+        CardDisplayModel.getInstance().getCardDisplayController().setSingleCardDisplay(singleCardDisplay);
+        CardDisplayModel.getInstance().getCardDisplayController().onCardDisplayStateChange(CardDisplayState.ARTICLES);
+        CardDisplayModel.getInstance().getCardDisplayController().cardDisplayStateProperty().addListener(e -> {
+            CardDisplayModel.getInstance().getCardDisplayController().onCardDisplayStateChange(CardDisplayModel.getInstance().getCardDisplayController().cardDisplayStateProperty().get());
         });
-
         setUserSpecificFields();
     }
 
@@ -65,12 +63,12 @@ public class AuctionSoftwareController implements Initializable {
         AuthenticationModel.getInstance().logoutUser();
     }
     private void onBtnShowAllArticles(){
-        cardDisplayState.set(CardDisplayState.ARTICLES);
+        CardDisplayModel.getInstance().getCardDisplayController().cardDisplayStateProperty().set(CardDisplayState.ARTICLES);
     }
-    private void onBtnShowOwnArticles(){
-        cardDisplayState.set(CardDisplayState.OWN_ARTICLES);
+    private void onBtnShowAccount(){
+        CardDisplayModel.getInstance().getCardDisplayController().cardDisplayStateProperty().set(CardDisplayState.ACCOUNT);
     }
-    private void onBtnShowBids(){
-        cardDisplayState.set(CardDisplayState.YOUR_BIDS);
+    private void onBtnSell(){
+        CardDisplayModel.getInstance().getCardDisplayController().cardDisplayStateProperty().set(CardDisplayState.SELL);
     }
 }
